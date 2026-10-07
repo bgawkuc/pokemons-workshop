@@ -1,8 +1,7 @@
 # PokeCards
 
-A React Native workshop starter. It is deliberately minimal — the app is built up step by step
-during a live coding session, so prefer the smallest change that teaches the point over a complete
-abstraction.
+A React Native workshop starter. It is deliberately minimal — attendees build the app up step by
+step during the workshop, so keep things simple and obvious rather than clever.
 
 Expo SDK 57 / React Native 0.86 / React 19.2, TypeScript `strict`, styled with `StyleSheet`.
 
@@ -54,8 +53,7 @@ npm run format       # Prettier (npm run format:check in CI)
 
 - It runs in **Expo Go** — there is no development build and no `ios/` or `android/` folder, so
   never run `npx expo prebuild`.
-- Only add libraries that work in Expo Go (no custom native code). Students must not need Xcode or
-  Android Studio, on Windows, macOS or Linux.
-- Install packages with `npx expo install <name>` so versions match the SDK. Use **npm** (not
-  `yarn`/`pnpm`) and `npx expo` (no global binary).
-- The README is in **Polish** — it is the students' guide. This file is in English.
+- Only add libraries that work in Expo Go (no custom native code). The app must run without Xcode
+  or Android Studio, on Windows, macOS and Linux alike.
+- Use **npm** (not `yarn`/`pnpm`) and `npx expo` (no global binary).
+- The README is in **Polish** — it is the attendees' guide. This file is in English.
