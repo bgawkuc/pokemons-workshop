@@ -1,18 +1,23 @@
 import { NavigationContainer } from '@react-navigation/native'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import RootNavigator from './src/navigation/RootNavigator'
+import RootStackNavigator from './src/navigation/RootStackNavigator'
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <RootNavigator />
-        <StatusBar style="auto" />
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <QueryClientProvider client={queryClient}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <RootStackNavigator />
+          <StatusBar style="auto" />
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </QueryClientProvider>
   )
 }
 

@@ -1,14 +1,26 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createNativeBottomTabNavigator } from '@react-navigation/bottom-tabs/unstable'
 
-import HomeScreen from '../screens/HomeScreen'
-import type { RootStackParamList } from './types'
+import HomeStackNavigator from './HomeStackNavigator'
+import SearchStackNavigator from './SearchStackNavigator'
+import type { RootTabParamList } from './types'
 
-const RootStack = createNativeStackNavigator<RootStackParamList>()
+const Tab = createNativeBottomTabNavigator<RootTabParamList>()
 
 export default function RootNavigator() {
   return (
-    <RootStack.Navigator>
-      <RootStack.Screen name="Home" component={HomeScreen} options={{ title: 'PokeCards' }} />
-    </RootStack.Navigator>
+    // The native tab bar is a real UITabBar / BottomNavigationView, so on iOS 26 it picks up Liquid
+    // Glass for free. `none` keeps it full size instead of shrinking it on scroll.
+    <Tab.Navigator screenOptions={{ tabBarMinimizeBehavior: 'none' }}>
+      <Tab.Screen
+        name="HomeTab"
+        component={HomeStackNavigator}
+        options={{ title: 'Home', tabBarIcon: { type: 'sfSymbol', name: 'house' } }}
+      />
+      <Tab.Screen
+        name="SearchTab"
+        component={SearchStackNavigator}
+        options={{ title: 'Search', tabBarIcon: { type: 'sfSymbol', name: 'magnifyingglass' } }}
+      />
+    </Tab.Navigator>
   )
 }

@@ -19,16 +19,17 @@ src/
   utils/               Shared types, constants and helpers
 ```
 
-Entry: `App.tsx` (`package.json` `main`) — it calls `registerRootComponent` and holds the provider
-tree: `SafeAreaProvider` + `NavigationContainer`. There is no separate `index.ts`.
-Empty folders are placeholders for the workshop and are kept by a `.gitkeep`.
-
 ## Navigation
 
-[React Navigation](https://reactnavigation.org/) v7. Navigators live in `src/navigation/`, one file
-per navigator, and route params are typed in `src/navigation/types.ts`. Use
-`createBottomTabNavigator` for tabs — the native tab bar from `@react-navigation/bottom-tabs/unstable`
-ships native code and does **not** run in Expo Go.
+[React Navigation](https://reactnavigation.org/) v7: root stack -> native tabs
+(`bottom-tabs/unstable`, Expo Go-safe, Liquid Glass on iOS 26) -> a stack per tab. Params live in
+`src/navigation/types.ts`; headers are hidden, so lists pad themselves with `useListInsets`.
+
+## Data fetching
+
+[TanStack Query](https://tanstack.com/query) owns server state - no manual `useEffect` fetching. The
+`fetch` wrapper and types live in `src/api/`, one hook per query in `src/hooks/`. Ask the API for
+what the screen needs: the card list is ~20k entries, so always pass `pagination:itemsPerPage`.
 
 ## Styling
 
