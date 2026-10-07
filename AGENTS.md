@@ -20,7 +20,8 @@ src/
   utils/               Shared types, constants and helpers
 ```
 
-Entry: `index.ts` → `App.tsx` (the provider tree: `SafeAreaProvider` + `NavigationContainer`).
+Entry: `App.tsx` (`package.json` `main`) — it calls `registerRootComponent` and holds the provider
+tree: `SafeAreaProvider` + `NavigationContainer`. There is no separate `index.ts`.
 Empty folders are placeholders for the workshop and are kept by a `.gitkeep`.
 
 ## Navigation

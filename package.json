@@ -1,7 +1,7 @@
 {
   "name": "pokecards",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "App.tsx",
   "dependencies": {
     "@react-navigation/bottom-tabs": "^7.20.0",
     "@react-navigation/native": "^7.5.0",
