@@ -48,6 +48,7 @@ over a simple function, type, or constant. Keep comments to a single line wherev
 npm install
 npm run start        # Metro; scan the QR code with Expo Go
 npx tsc --noEmit     # typecheck
+npm run format       # Prettier (npm run format:check in CI)
 ```
 
 - It runs in **Expo Go** — there is no development build and no `ios/` or `android/` folder, so

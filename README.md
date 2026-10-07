@@ -91,6 +91,18 @@ przez Expo Go.
 npx tsc --noEmit
 ```
 
+## Formatowanie kodu
+
+Kod formatujemy [Prettierem](https://prettier.io/) (konfiguracja w `.prettierrc`):
+
+```bash
+npm run format         # formatuje pliki
+npm run format:check   # tylko sprawdza, bez zmian
+```
+
+W VS Code warto zainstalować rozszerzenie _Prettier - Code formatter_ i włączyć
+_Format on Save_.
+
 ## Licencja
 
 Kod w tym repozytorium jest dostępny na licencji [MIT](LICENSE).
