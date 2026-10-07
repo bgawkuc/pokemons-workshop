@@ -1,5 +1,11 @@
 import { createNativeBottomTabNavigator } from '@react-navigation/bottom-tabs/unstable'
+import type { NativeBottomTabIcon } from '@react-navigation/bottom-tabs/unstable'
+import type { SFSymbol } from 'sf-symbols-typescript'
+import { Platform } from 'react-native'
+import type { ImageSourcePropType } from 'react-native'
 
+import homeIcon from '../../assets/tabs/home.png'
+import searchIcon from '../../assets/tabs/search.png'
 import HomeStackNavigator from './HomeStackNavigator'
 import SearchStackNavigator from './SearchStackNavigator'
 import type { RootTabParamList } from './types'
@@ -8,19 +14,27 @@ const Tab = createNativeBottomTabNavigator<RootTabParamList>()
 
 export default function RootNavigator() {
   return (
-    // The native tab bar is a real UITabBar / BottomNavigationView, so on iOS 26 it picks up Liquid
-    // Glass for free. `none` keeps it full size instead of shrinking it on scroll.
     <Tab.Navigator screenOptions={{ tabBarMinimizeBehavior: 'none' }}>
       <Tab.Screen
         name="HomeTab"
         component={HomeStackNavigator}
-        options={{ title: 'Home', tabBarIcon: { type: 'sfSymbol', name: 'house' } }}
+        options={{
+          title: 'Home',
+          tabBarIcon: tabIcon('house', homeIcon),
+        }}
       />
       <Tab.Screen
         name="SearchTab"
         component={SearchStackNavigator}
-        options={{ title: 'Search', tabBarIcon: { type: 'sfSymbol', name: 'magnifyingglass' } }}
+        options={{
+          title: 'Search',
+          tabBarIcon: tabIcon('magnifyingglass', searchIcon),
+        }}
       />
     </Tab.Navigator>
   )
+}
+
+function tabIcon(name: SFSymbol, source: ImageSourcePropType): NativeBottomTabIcon {
+  return Platform.OS === 'ios' ? { type: 'sfSymbol', name } : { type: 'image', source }
 }

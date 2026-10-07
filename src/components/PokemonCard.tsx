@@ -1,5 +1,6 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 
+import { colors } from '../theme/colors'
 import type { CardBrief } from '../utils/types'
 
 type Props = {
@@ -10,7 +11,11 @@ export default function PokemonCard({ card }: Props) {
   return (
     <View style={styles.tile}>
       {/* TCGdex image URLs have no extension - the quality and format are the last two segments. */}
-      <Image source={{ uri: `${card.image}/low.webp` }} style={styles.image} resizeMode="contain" />
+      <Image
+        source={{ uri: `${card.image}/high.webp` }}
+        style={styles.image}
+        resizeMode="contain"
+      />
       <Text style={styles.name} numberOfLines={2}>
         {card.name}
       </Text>
@@ -21,7 +26,7 @@ export default function PokemonCard({ card }: Props) {
 const styles = StyleSheet.create({
   tile: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     borderRadius: 12,
     padding: 8,
   },
@@ -29,7 +34,7 @@ const styles = StyleSheet.create({
     width: '100%',
     aspectRatio: 0.72,
     borderRadius: 4,
-    backgroundColor: '#f1f1f1',
+    backgroundColor: colors.offWhite,
   },
   name: {
     marginTop: 8,
