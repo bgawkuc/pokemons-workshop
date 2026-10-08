@@ -1,7 +1,7 @@
 import type { NavigatorScreenParams } from '@react-navigation/native'
 
 export type HomeStackParamList = {
-  Home: undefined
+  CardList: undefined
 }
 
 export type RootTabParamList = {

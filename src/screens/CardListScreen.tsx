@@ -3,11 +3,9 @@ import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-nativ
 import PokemonCard from '../components/PokemonCard'
 import { useCards } from '../hooks/useCards'
 import { useListInsets } from '../hooks/useListInsets'
-import { colors } from '../theme/colors'
 
-export default function HomeScreen() {
+export default function CardListScreen() {
   const { data: cards, isPending, isError } = useCards()
-
   const listInsets = useListInsets()
 
   if (isPending) {
@@ -56,6 +54,5 @@ const styles = StyleSheet.create({
   message: {
     fontSize: 17,
     fontWeight: '600',
-    color: colors.danger,
   },
 })

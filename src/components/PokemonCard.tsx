@@ -10,8 +10,8 @@ type Props = {
 export default function PokemonCard({ card }: Props) {
   return (
     <View style={styles.tile}>
-      {/* TCGdex image URLs have no extension - the quality and format are the last two segments. */}
       <Image
+        // TCGdex image URLs have no extension - the quality and format are the last two segments.
         source={{ uri: `${card.image}/high.webp` }}
         style={styles.image}
         resizeMode="contain"
