@@ -1,14 +1,30 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createNativeBottomTabNavigator } from '@react-navigation/bottom-tabs/unstable'
+import type { NativeBottomTabIcon } from '@react-navigation/bottom-tabs/unstable'
+import type { SFSymbol } from 'sf-symbols-typescript'
+import { Platform } from 'react-native'
+import type { ImageSourcePropType } from 'react-native'
 
-import HomeScreen from '../screens/HomeScreen'
-import type { RootStackParamList } from './types'
+import homeIcon from '../../assets/tabs/home.png'
+import HomeStackNavigator from './HomeStackNavigator'
+import type { RootTabParamList } from './types'
 
-const RootStack = createNativeStackNavigator<RootStackParamList>()
+const Tab = createNativeBottomTabNavigator<RootTabParamList>()
 
 export default function RootNavigator() {
   return (
-    <RootStack.Navigator>
-      <RootStack.Screen name="Home" component={HomeScreen} options={{ title: 'PokeCards' }} />
-    </RootStack.Navigator>
+    <Tab.Navigator screenOptions={{ tabBarMinimizeBehavior: 'none' }}>
+      <Tab.Screen
+        name="HomeTab"
+        component={HomeStackNavigator}
+        options={{
+          title: 'Home',
+          tabBarIcon: tabIcon('house', homeIcon),
+        }}
+      />
+    </Tab.Navigator>
   )
+}
+
+function tabIcon(name: SFSymbol, source: ImageSourcePropType): NativeBottomTabIcon {
+  return Platform.OS === 'ios' ? { type: 'sfSymbol', name } : { type: 'image', source }
 }
