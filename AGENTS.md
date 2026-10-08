@@ -14,16 +14,13 @@ src/
   navigation/          React Navigation v7 tree + navigation types
   screens/             One file per screen, default-exported
   components/          Feature components; components/ui/ holds the primitives
-  stores/              Global app state
   theme/               Colours, typography, design tokens
   utils/               Shared types, constants and helpers
 ```
 
 ## Navigation
 
-[React Navigation](https://reactnavigation.org/) v7: root stack -> native tabs
-(`bottom-tabs/unstable`, Expo Go-safe, Liquid Glass on iOS 26) -> a stack per tab. Params live in
-`src/navigation/types.ts`; headers are hidden, so lists pad themselves with `useListInsets`.
+[React Navigation](https://reactnavigation.org/) v7. Params live in `src/navigation/types.ts`.
 
 ## Data fetching
 

@@ -8,7 +8,7 @@ instalować Android Studio ani Xcode.
 
 ## Zadania
 
-Zadania na warsztaty znajdziesz na Notion:
+Zadania na warsztaty znajdziesz w Notion:
 [PokeCards — zadania](https://lopsided-devourer-ca4.notion.site/3f3f5485ccaf804e98f4e381c2cb6e7e?v=3f3f5485ccaf8075807e000c7c56190a)
 
 ## Czego potrzebujesz
