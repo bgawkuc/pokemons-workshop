@@ -5,9 +5,7 @@ import { Platform } from 'react-native'
 import type { ImageSourcePropType } from 'react-native'
 
 import homeIcon from '../../assets/tabs/home.png'
-import searchIcon from '../../assets/tabs/search.png'
 import HomeStackNavigator from './HomeStackNavigator'
-import SearchStackNavigator from './SearchStackNavigator'
 import type { RootTabParamList } from './types'
 
 const Tab = createNativeBottomTabNavigator<RootTabParamList>()
@@ -21,14 +19,6 @@ export default function RootNavigator() {
         options={{
           title: 'Home',
           tabBarIcon: tabIcon('house', homeIcon),
-        }}
-      />
-      <Tab.Screen
-        name="SearchTab"
-        component={SearchStackNavigator}
-        options={{
-          title: 'Search',
-          tabBarIcon: tabIcon('magnifyingglass', searchIcon),
         }}
       />
     </Tab.Navigator>

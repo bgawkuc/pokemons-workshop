@@ -1,26 +1,61 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native'
 
+import PokemonCard from '../components/PokemonCard'
+import { useCards } from '../hooks/useCards'
+import { useListInsets } from '../hooks/useListInsets'
 import { colors } from '../theme/colors'
 
 export default function HomeScreen() {
+  const { data: cards, isPending, isError } = useCards()
+
+  const listInsets = useListInsets()
+
+  if (isPending) {
+    return (
+      <View style={styles.centered}>
+        <ActivityIndicator />
+      </View>
+    )
+  }
+
+  if (isError) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.message}>Could not load cards</Text>
+      </View>
+    )
+  }
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>PokeCards App</Text>
-    </View>
+    <FlatList
+      data={cards}
+      keyExtractor={(card) => card.id}
+      numColumns={2}
+      contentInsetAdjustmentBehavior="automatic"
+      scrollIndicatorInsets={{ right: 1 }}
+      contentContainerStyle={[styles.list, listInsets]}
+      columnWrapperStyle={styles.row}
+      renderItem={({ item }) => <PokemonCard card={item} />}
+    />
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
+  list: {
+    paddingHorizontal: 8,
+    gap: 16,
+  },
+  row: {
+    gap: 16,
+  },
+  centered: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.white,
-    gap: 8,
   },
-  title: {
-    fontSize: 24,
+  message: {
+    fontSize: 17,
     fontWeight: '600',
-    color: colors.black,
+    color: colors.danger,
   },
 })

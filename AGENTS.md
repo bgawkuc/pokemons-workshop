@@ -28,8 +28,7 @@ src/
 ## Data fetching
 
 [TanStack Query](https://tanstack.com/query) owns server state - no manual `useEffect` fetching. The
-`fetch` wrapper and types live in `src/api/`, one hook per query in `src/hooks/`. Ask the API for
-what the screen needs: the card list is ~20k entries, so always pass `pagination:itemsPerPage`.
+`fetch` wrapper and types live in `src/api/`, one hook per query in `src/hooks/`.
 
 ## Styling
 
