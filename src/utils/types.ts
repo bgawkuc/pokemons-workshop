@@ -5,3 +5,17 @@ export type CardBrief = {
   name: string
   image: string
 }
+
+/** Card as it comes back from the single card endpoint */
+export type Card = {
+  id: string
+  name: string
+  image: string
+  rarity: string
+  illustrator?: string
+  hp?: number
+  types?: string[]
+  set: {
+    name: string
+  }
+}
