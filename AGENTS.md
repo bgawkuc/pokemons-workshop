@@ -8,8 +8,10 @@ Expo SDK 57 / React Native 0.86 / React 19.2, TypeScript `strict`, styled with `
 # Project structure
 
 ```
+assets/                Expo app assets referenced from app.json (icons,splash, favicon)
 src/
   api/                 HTTP calls and API types
+  assets/              Images imported from code, grouped per feature (tabs/, qr-codes/)
   hooks/               Custom hooks
   navigation/          React Navigation v7 tree + navigation types
   screens/             One file per screen, default-exported
