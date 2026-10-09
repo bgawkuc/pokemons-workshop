@@ -1,15 +1,16 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text } from 'react-native'
 
 import { colors } from '../theme/colors'
 import type { CardBrief } from '../utils/types'
 
 type Props = {
   card: CardBrief
+  onPress: (id: string) => void
 }
 
-export default function PokemonCard({ card }: Props) {
+export default function PokemonCard({ card, onPress }: Props) {
   return (
-    <View style={styles.tile}>
+    <Pressable style={styles.tile} onPress={() => onPress(card.id)}>
       <Image
         // TCGdex image URLs have no extension - the quality and format are the last two segments.
         source={{ uri: `${card.image}/high.webp` }}
@@ -19,7 +20,7 @@ export default function PokemonCard({ card }: Props) {
       <Text style={styles.name} numberOfLines={2}>
         {card.name}
       </Text>
-    </View>
+    </Pressable>
   )
 }
 

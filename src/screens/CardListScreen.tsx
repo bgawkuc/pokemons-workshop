@@ -1,12 +1,20 @@
+import { useNavigation } from '@react-navigation/native'
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native'
 
 import PokemonCard from '../components/PokemonCard'
 import { useCards } from '../hooks/useCards'
 import { useListInsets } from '../hooks/useListInsets'
+import type { HomeStackParamList } from '../navigation/types'
 
 export default function CardListScreen() {
   const { data: cards, isPending, isError } = useCards()
   const listInsets = useListInsets()
+  const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>()
+
+  const onPress = (id: string) => {
+    navigation.navigate('CardDetails', { id })
+  }
 
   if (isPending) {
     return (
@@ -33,7 +41,7 @@ export default function CardListScreen() {
       scrollIndicatorInsets={{ right: 1 }}
       contentContainerStyle={[styles.list, listInsets]}
       columnWrapperStyle={styles.row}
-      renderItem={({ item }) => <PokemonCard card={item} />}
+      renderItem={({ item }) => <PokemonCard card={item} onPress={onPress} />}
     />
   )
 }
