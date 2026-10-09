@@ -5,8 +5,14 @@ export type HomeStackParamList = {
   CardDetails: { id: string }
 }
 
+export type ScannerStackParamList = {
+  Scanner: undefined
+  CardDetails: { id: string }
+}
+
 export type RootTabParamList = {
   HomeTab: NavigatorScreenParams<HomeStackParamList>
+  ScannerTab: NavigatorScreenParams<ScannerStackParamList>
 }
 
 export type RootStackParamList = {
