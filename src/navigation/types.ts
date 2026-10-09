@@ -10,9 +10,14 @@ export type ScannerStackParamList = {
   CardDetails: { id: string }
 }
 
+export type DiscoverStackParamList = {
+  Discover: undefined
+}
+
 export type RootTabParamList = {
   HomeTab: NavigatorScreenParams<HomeStackParamList>
   ScannerTab: NavigatorScreenParams<ScannerStackParamList>
+  DiscoverTab: NavigatorScreenParams<DiscoverStackParamList>
 }
 
 export type RootStackParamList = {

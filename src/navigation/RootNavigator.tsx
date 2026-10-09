@@ -6,6 +6,8 @@ import type { ImageSourcePropType } from 'react-native'
 
 import cameraIcon from '../assets/tabs/camera.png'
 import houseIcon from '../assets/tabs/house.png'
+import magnifyingGlassIcon from '../assets/tabs/magnifyingGlass.png'
+import DiscoverStackNavigator from './DiscoverStackNavigator'
 import HomeStackNavigator from './HomeStackNavigator'
 import ScannerStackNavigator from './ScannerStackNavigator'
 import type { RootTabParamList } from './types'
@@ -29,6 +31,14 @@ export default function RootNavigator() {
         options={{
           title: 'Scanner',
           tabBarIcon: tabIcon('camera', cameraIcon),
+        }}
+      />
+      <Tab.Screen
+        name="DiscoverTab"
+        component={DiscoverStackNavigator}
+        options={{
+          title: 'Discover',
+          tabBarIcon: tabIcon('magnifyingglass', magnifyingGlassIcon),
         }}
       />
     </Tab.Navigator>
