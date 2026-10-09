@@ -7,6 +7,7 @@ export function useCards() {
   return useQuery({
     queryKey: ['cards'],
     // `image=https` filter keeps only cards that have an image
-    queryFn: () => get<CardBrief[]>(`?image=https&pagination:page=2&pagination:itemsPerPage=30`),
+    queryFn: () =>
+      get<CardBrief[]>('/cards?image=https&pagination:page=2&pagination:itemsPerPage=30'),
   })
 }

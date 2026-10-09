@@ -4,7 +4,7 @@ import type { SFSymbol } from 'sf-symbols-typescript'
 import { Platform } from 'react-native'
 import type { ImageSourcePropType } from 'react-native'
 
-import homeIcon from '../../assets/tabs/home.png'
+import houseIcon from '../assets/tabs/house.png'
 import HomeStackNavigator from './HomeStackNavigator'
 import type { RootTabParamList } from './types'
 
@@ -18,13 +18,14 @@ export default function RootNavigator() {
         component={HomeStackNavigator}
         options={{
           title: 'Home',
-          tabBarIcon: tabIcon('house', homeIcon),
+          tabBarIcon: tabIcon('house', houseIcon),
         }}
       />
     </Tab.Navigator>
   )
 }
 
+// SF Symbols ship with iOS only, so Android needs a bundled PNG instead
 function tabIcon(name: SFSymbol, source: ImageSourcePropType): NativeBottomTabIcon {
   return Platform.OS === 'ios' ? { type: 'sfSymbol', name } : { type: 'image', source }
 }
