@@ -1,5 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Sharing from 'expo-sharing'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ActivityIndicator, Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import ViewShot, { type ViewShotRef } from 'react-native-view-shot'
 
@@ -7,11 +8,28 @@ import { useRandomCard } from '../hooks/useRandomCard'
 import { colors } from '../theme/colors'
 
 const BACKGROUNDS = [colors.primary, colors.danger, colors.grey]
+const BACKGROUND_KEY = 'cardBackground'
 
 export default function DiscoverScreen() {
   const { data, refetch, isFetching } = useRandomCard()
   const [background, setBackground] = useState(colors.primary)
   const viewShotRef = useRef<ViewShotRef>(null)
+
+  useEffect(() => {
+    const loadBackground = async () => {
+      const saved = await AsyncStorage.getItem(BACKGROUND_KEY)
+      if (saved) {
+        setBackground(saved)
+      }
+    }
+
+    loadBackground()
+  }, [])
+
+  const onSelectBackground = async (color: string) => {
+    setBackground(color)
+    await AsyncStorage.setItem(BACKGROUND_KEY, color)
+  }
 
   const onShare = async () => {
     const uri = await viewShotRef.current?.capture()
@@ -46,7 +64,7 @@ export default function DiscoverScreen() {
               { backgroundColor: color },
               color === background && styles.circleSelected,
             ]}
-            onPress={() => setBackground(color)}
+            onPress={() => onSelectBackground(color)}
           />
         ))}
       </View>
