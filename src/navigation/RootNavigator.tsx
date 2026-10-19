@@ -12,7 +12,12 @@ const Tab = createNativeBottomTabNavigator<RootTabParamList>()
 
 export default function RootNavigator() {
   return (
-    <Tab.Navigator screenOptions={{ tabBarMinimizeBehavior: 'none' }}>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarMinimizeBehavior: 'none',
+        tabBarLabelVisibilityMode: 'labeled',
+      }}
+    >
       <Tab.Screen
         name="HomeTab"
         component={HomeStackNavigator}
