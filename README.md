@@ -8,8 +8,11 @@ instalować Android Studio ani Xcode.
 
 ## Zadania
 
-Zadania na warsztaty znajdziesz w Notion:
-[PokeCards — zadania](https://lopsided-devourer-ca4.notion.site/3f3f5485ccaf804e98f4e381c2cb6e7e?v=3f3f5485ccaf8075807e000c7c56190a)
+Zadania na warsztaty znajdziesz w Notion: [PokeCards — zadania](https://lopsided-devourer-ca4.notion.site/3f3f5485ccaf804e98f4e381c2cb6e7e?v=3f3f5485ccaf8075807e000c7c56190a)
+
+## Prezentacja
+
+Slajdy z warsztatów: [react-native-presentation.pdf](docs/react-native-presentation.pdf)
 
 ## Czego potrzebujesz
 
@@ -26,7 +29,11 @@ Zadania na warsztaty znajdziesz w Notion:
 
 ## Instalacja Node.js
 
-Node.js można pobrać z [nodejs.org](https://nodejs.org/), ale polecam **nvm** — menadżer wersji Node. Pozwala trzymać kilka wersji i przełączać się między nimi jedną komendą, co jest przydatne, gdy inny projekt wymaga starszego Node. Instrukcja instalacji jest w dokumentacji:
+Najprościej pobrać instalator z [nodejs.org](https://nodejs.org/) — wybierz wersję **LTS** i przeklikaj
+instalator. To wystarczy do warsztatów.
+
+Jeśli chcesz zarządzać kilkoma wersjami Node (bo inny projekt wymaga starszej), możesz zamiast tego
+użyć **nvm** — menadżera wersji, który pozwala przełączać się między nimi jedną komendą:
 
 - macOS / Linux — [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 - Windows — [nvm-windows](https://github.com/coreybutler/nvm-windows#installation--upgrades)
@@ -68,6 +75,25 @@ Masz zainstalowane Android Studio albo Xcode i chcesz użyć emulatora? Opcjonal
 npm run android   # emulator Android
 npm run ios       # symulator iOS
 ```
+
+## Rozwiązywanie problemów
+
+### Windows
+
+Jeśli po instalacji Node wpisanie `npm` w terminalu kończy się błędem w stylu _„npm.ps1 cannot be
+loaded because running scripts is disabled on this system"_, to terminal domyślnie blokuje
+uruchamianie skryptów. Odblokuj je dla swojego użytkownika:
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+Potem otwórz nowe okno terminala i sprawdź czy błąd zniknął.
+
+Więcej o tym błędzie:
+
+- [Stack Overflow](https://stackoverflow.com/questions/4037939/powershell-says-execution-of-scripts-is-disabled-on-this-system)
+- [Dokumentacja Microsoft](https://learn.microsoft.com/en-US/troubleshoot/azure/active-directory/cannot-run-scripts-powershell).
 
 ## Licencja
 
