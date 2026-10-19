@@ -15,7 +15,6 @@ export default function RootNavigator() {
     <Tab.Navigator
       screenOptions={{
         tabBarMinimizeBehavior: 'none',
-        // Android's `auto` mode hides labels of unselected tabs once there are four of them
         tabBarLabelVisibilityMode: 'labeled',
       }}
     >
