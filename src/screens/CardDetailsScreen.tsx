@@ -1,13 +1,17 @@
 import { useRoute, type RouteProp } from '@react-navigation/native'
-import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 import { useCard } from '../hooks/useCard'
+import { useCollection } from '../hooks/useCollection'
 import type { HomeStackParamList } from '../navigation/types'
 import { colors } from '../theme/colors'
 
 export default function CardDetailsScreen() {
   const route = useRoute<RouteProp<HomeStackParamList, 'CardDetails'>>()
   const { data: card, isPending, isError } = useCard(route.params.id)
+  const { collection, toggleCard } = useCollection()
+
+  const isSaved = collection.some((saved) => saved.id === route.params.id)
 
   if (isPending) {
     return (
@@ -38,6 +42,12 @@ export default function CardDetailsScreen() {
       {card.hp && <InfoRow label="HP" value={String(card.hp)} />}
       {card.types && <InfoRow label="Types" value={card.types.join(', ')} />}
       {card.illustrator && <InfoRow label="Illustrator" value={card.illustrator} />}
+
+      <Pressable style={styles.button} onPress={() => toggleCard(card)}>
+        <Text style={styles.buttonText}>
+          {isSaved ? 'Remove from collection' : 'Add to collection'}
+        </Text>
+      </Pressable>
     </View>
   )
 }
@@ -73,5 +83,15 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  button: {
+    alignItems: 'center',
+    padding: 16,
+    borderRadius: 24,
+    backgroundColor: colors.primary,
+  },
+  buttonText: {
+    color: colors.white,
+    fontWeight: '600',
   },
 })
