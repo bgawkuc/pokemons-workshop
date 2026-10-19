@@ -5,8 +5,10 @@ import { Platform } from 'react-native'
 import type { ImageSourcePropType } from 'react-native'
 
 import cameraIcon from '../assets/tabs/camera.png'
+import cardsIcon from '../assets/tabs/cards.png'
 import houseIcon from '../assets/tabs/house.png'
 import magnifyingGlassIcon from '../assets/tabs/magnifyingGlass.png'
+import CollectionStackNavigator from './CollectionStackNavigator'
 import DiscoverStackNavigator from './DiscoverStackNavigator'
 import HomeStackNavigator from './HomeStackNavigator'
 import ScannerStackNavigator from './ScannerStackNavigator'
@@ -39,6 +41,14 @@ export default function RootNavigator() {
         options={{
           title: 'Discover',
           tabBarIcon: tabIcon('magnifyingglass', magnifyingGlassIcon),
+        }}
+      />
+      <Tab.Screen
+        name="CollectionTab"
+        component={CollectionStackNavigator}
+        options={{
+          title: 'Collection',
+          tabBarIcon: tabIcon('rectangle.portrait.on.rectangle.portrait', cardsIcon),
         }}
       />
     </Tab.Navigator>
